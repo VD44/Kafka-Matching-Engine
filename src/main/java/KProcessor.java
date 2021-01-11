@@ -119,48 +119,6 @@ public class KProcessor {
                 case TRANSFER:
                     result = transfer(order);
                     break;
-                default:
-                    ArrayList<Long> x = new ArrayList<>();
-                    KeyValueIterator<Long, Long> iter = this.balances.all();
-                    while (iter.hasNext()) {
-                        KeyValue<Long, Long> entry = iter.next();
-                        x.add(entry.key);
-                    }
-                    for (Long s : x) this.balances.delete(s);
-
-                    ArrayList<UUID> x2 = new ArrayList<>();
-                    KeyValueIterator<UUID, UUID> iter2 = this.positions.all();
-                    while (iter2.hasNext()) {
-                        KeyValue<UUID, UUID> entry = iter2.next();
-                        x2.add(entry.key);
-                    }
-                    for (UUID s : x2) this.positions.delete(s);
-
-                    ArrayList<Long> x3 = new ArrayList<>();
-                    KeyValueIterator<Long, Order> iter3 = this.orders.all();
-                    while (iter3.hasNext()) {
-                        KeyValue<Long, Order> entry = iter3.next();
-                        x3.add(entry.key);
-                    }
-                    for (Long s : x3) this.orders.delete(s);
-
-                    ArrayList<Long> x4 = new ArrayList<>();
-                    KeyValueIterator<Long, UUID> iter4 = this.books.all();
-                    while (iter4.hasNext()) {
-                        KeyValue<Long, UUID> entry = iter4.next();
-                        x4.add(entry.key);
-                    }
-                    for (Long s : x4) this.books.delete(s);
-
-                    ArrayList<Long> x5 = new ArrayList<>();
-                    KeyValueIterator<Long, UUID> iter5 = this.buckets.all();
-                    while (iter5.hasNext()) {
-                        KeyValue<Long, UUID> entry = iter5.next();
-                        x5.add(entry.key);
-                    }
-                    for (Long s : x5) this.buckets.delete(s);
-                    break;
-
             }
             if(!result) order.action = REJECT;
             this.context.forward("OUT", order);
