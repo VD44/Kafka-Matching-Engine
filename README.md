@@ -21,7 +21,6 @@ $ node consumer.js
 ```
 Build using maven or IDE:
 ```bash
-$ mvn dependency:resolve
 $ mvn install
 ```
 Run:
