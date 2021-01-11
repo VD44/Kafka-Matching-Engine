@@ -21,9 +21,10 @@ $ node consumer.js
 ```
 Build using maven or IDE:
 ```bash
-$ mvn package
+$ mvn dependency:resolve
+$ mvn install
 ```
 Run:
 ```bash
-$ java -cp target/kafka-matching-engine-1.0-SNAPSHOT.jar me.App
+$ java -cp target/KProcessor-1.0-SNAPSHOT.jar KProcessor
 ```
